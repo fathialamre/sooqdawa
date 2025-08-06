@@ -1,0 +1,18 @@
+1- And you want everything to be translated between Arabic and English, always.
+2- Add getLabel and getPluralLabel to resources. You can refer to the resources in Qomrah for guidance, always.
+3- Add Info list with good and nice ui.
+
+
+[Interface]
+Private IP address for the wg0 interface ##
+Address = 10.0.0.1/24
+
+VPN server listening port ##
+ListenPort = 51820
+
+VPN server private key ##
+PrivateKey = iKm7Uok/MIjQGWLYhbvCKPfbvvPLEmh/rOVjaQxVqUg=
+
+Firewall rules ##
+PostUp = iptables -A FORWARD -i wg0 -j ACCEPT; iptables -t nat -A POSTROUTING -o enp1s0 -j MASQUERADE
+PostDown = iptables -D FORWARD -i wg0 -j ACCEPT; iptables -t nat -D POSTROUTING -o enp1s0 -j MASQUERAD

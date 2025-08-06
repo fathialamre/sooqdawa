@@ -1,0 +1,12 @@
+@import '../../../../vendor/filament/filament/resources/css/theme.css';
+
+@source '../../../../app/Filament/**/*';
+@source '../../../../resources/views/filament/**/*';
+
+:root {
+    --radius-md: 0.2rem;
+    --radius-lg: 0.2rem;
+    --radius-xl: 0.2rem;
+}
+
+
