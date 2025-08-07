@@ -24,7 +24,7 @@ class AdminSeeder extends Seeder
             [
                 'name' => 'مدير النظام',
                 'email' => 'admin@sooqdawa.com',
-                'password' => Hash::make('password'),
+                'password' => Hash::make('sooqdawa@2025'),
                 'type' => 'admin',
                 'is_active' => true,
                 'country_id' => $country?->id,
@@ -38,7 +38,7 @@ class AdminSeeder extends Seeder
             [
                 'name' => 'أحمد المرعي',
                 'email' => 'alamre@sooqdawa.com',
-                'password' => Hash::make('admin123'),
+                'password' => Hash::make('sooqdawa@2025'),
                 'type' => 'admin',
                 'is_active' => true,
                 'country_id' => $country?->id,
