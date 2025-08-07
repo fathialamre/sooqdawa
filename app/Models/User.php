@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -18,7 +19,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 class User extends Authenticatable implements HasMedia
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable, SoftDeletes, InteractsWithMedia;
+    use HasFactory, Notifiable, SoftDeletes, InteractsWithMedia, HasApiTokens;
 
     /**
      * The attributes that are mass assignable.
@@ -34,6 +35,7 @@ class User extends Authenticatable implements HasMedia
         'fcm_token',
         'is_active',
         'country_id',
+        'account_verified_at',
     ];
 
     /**
@@ -55,6 +57,7 @@ class User extends Authenticatable implements HasMedia
     {
         return [
             'email_verified_at' => 'datetime',
+            'account_verified_at' => 'datetime',
             'password' => 'hashed',
             'is_active' => 'boolean',
         ];

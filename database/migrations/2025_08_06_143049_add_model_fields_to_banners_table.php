@@ -12,8 +12,18 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('banners', function (Blueprint $table) {
-            // Remove polymorphic fields
-            $table->dropColumn(['bannerable_id', 'bannerable_type']);
+            // Drop the index first if it exists
+            if (Schema::hasColumn('banners', 'bannerable_id')) {
+                $table->dropIndex(['bannerable_type', 'bannerable_id']);
+            }
+            
+            // Remove polymorphic fields if they exist
+            if (Schema::hasColumn('banners', 'bannerable_id')) {
+                $table->dropColumn('bannerable_id');
+            }
+            if (Schema::hasColumn('banners', 'bannerable_type')) {
+                $table->dropColumn('bannerable_type');
+            }
             
             // Add new fields
             $table->unsignedBigInteger('model_id')->nullable()->after('external_link');
